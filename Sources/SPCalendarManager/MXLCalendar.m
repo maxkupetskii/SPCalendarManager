@@ -28,9 +28,8 @@
 
 @implementation MXLCalendar
 
--(id)init {
-    self = [super init];
-    if (self) {
+- (id)init{
+    if (self = [super init]) {
         self.events = [[NSMutableArray alloc] init];
         daysOfEvents = [[NSMutableDictionary alloc] init];
         loadedEvents = [[NSMutableDictionary alloc] init];
@@ -38,12 +37,15 @@
     return self;
 }
 
--(void)addEvent:(MXLCalendarEvent *)event {
+- (void)addEvent:(MXLCalendarEvent *)event {
     [self.events addObject:event];
 }
 
--(void)addEvent:(MXLCalendarEvent *)event onDay:(NSInteger)day month:(NSInteger)month year:(NSInteger)year {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+- (void)addEvent:(MXLCalendarEvent *)event
+           onDay:(NSInteger)day
+           month:(NSInteger)month
+            year:(NSInteger)year {
+    NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyyddMM"];
 
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth| NSCalendarUnitYear fromDate:[NSDate date]];
